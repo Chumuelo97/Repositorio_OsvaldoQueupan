@@ -77,7 +77,7 @@ class Matryoshka(list):
         #m_list es la lista que contienen las muñecas
         m_list = random.sample(range(1, self.tamanio+1), self.tamanio)
         self.matryoshka=m_list
-        print(f"{m_list}")
+        print(f"Lista de muñecas:{m_list}")
         return m_list
         
 
