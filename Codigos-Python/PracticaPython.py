@@ -225,7 +225,7 @@ imports que debemos tener:
 
 *para numeros random sin repetir
 
-'''
+#
 class Matryoshka(list):
     def __init__(self, tamanio):
         self.tamanio = tamanio
@@ -265,7 +265,7 @@ class Matryoshka(list):
 
     def getMatryoshka(self):
         return self.matryoshka
-'''
+
 #proceso de 'anidar'
 
 num_min = 1
@@ -396,3 +396,51 @@ print("\nTiempo de ejecución desanidar: %s segundos" % (time.time() - start_tim
 
 '''
 
+
+import random
+import time
+class Matryoshka:
+    def init(self, tamanio):
+        self.tamanio = tamanio #tamanio de la matryoshka
+        self.matryoshka = None #almacena una matryoshka en el interior, valor None por defecto, ya que en un comienzo no hay matryoshkas en el interior
+
+    #coloca una matryoshka dentro de otra
+    def anidar(self, munieca):
+        if munieca.tamanio < self.tamanio:
+            self.matryoshka = munieca
+        else:
+            print("La muñeca es demasiado grande para anidarla.")
+
+    #obtiene el tamaño de la matryoshka
+    def getTamanio(self):
+        return self.tamanio
+
+    def anidar(self, muniecas):
+        if not muniecas:
+            return
+        munieca = muniecas.pop(0)
+        if munieca.tamanio < self.tamanio:
+            self.matryoshka = munieca
+            print(f"{self.tamanio} <--- {munieca.tamanio} ")
+            self.matryoshka.anidar(muniecas)
+        else:
+            print("La muñeca es demasiado grande para anidarla.")
+    #contar matrushkas
+    def contarMatryoshkas(self):
+        if self.matryoshka is None:
+            return 0
+        else:
+            return 1 + self.matryoshka.contarMatryoshkas()
+    #obtiene la matryoshka almacenada
+    def getMatryoshka(self):
+        return self.matryoshka
+
+
+#Crear algunas muñecas Matryoshka de diferentes tamaños
+start_time = time.time()
+matryoshkas = [Matryoshka(i) for i in range(10, 0, -1)]
+matryoshkas[0].anidar(matryoshkas[1:])
+print(matryoshkas[0].contarMatryoshkas())
+end_time = time.time()
+execution_time = end_time - start_time
+print("Tiempo de ejecución: ", execution_time)
