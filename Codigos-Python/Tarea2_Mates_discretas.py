@@ -16,12 +16,10 @@ class Matryoshka(list):
         
     
     def anidar_recursivo(self, munieca):
-        
         if len(munieca) == 0:
             return munieca #return munieca NONE       
         else:
             print(f"Orden de las muñecas (Recursivo): {munieca}")
-            time.sleep(1)
 
             self.matryoshka = munieca
             muneca_i = min(munieca)
@@ -38,7 +36,6 @@ class Matryoshka(list):
     def anidar_iterativo(self, munieca):
         while len(munieca) > 0:
             print(f"Orden de las muñecas (Iterativo): {munieca}")
-            time.sleep(1)
 
             self.matryoshka = munieca
             muneca_i = min(munieca)
@@ -54,7 +51,6 @@ class Matryoshka(list):
     
 
     def desanidar(self,munieca):
-         
         self.anidar_iterativo=munieca
         lista=[]
         #creamos una estructura iterativa
@@ -62,8 +58,9 @@ class Matryoshka(list):
             lista.append(i)
         #creamos una lista ordenada
         lista_o = sorted(lista, reverse=True)
+        print(f"Desanidación:")
         for j in lista_o:
-            print(f"Desanidación: {j}")
+            print(f"{j}")
         return lista 
 
     #obtiene el tamaño de la matryoshka
@@ -75,10 +72,10 @@ class Matryoshka(list):
     #obtiene la matryoshka almacenada 
     def getMatryoshka(self):
         #m_list es la lista que contienen las muñecas
-        m_list = random.sample(range(1, self.tamanio+1), self.tamanio)
-        self.matryoshka=m_list
-        print(f"Lista de muñecas:{m_list}")
-        return m_list
+        N = random.sample(range(1, self.tamanio+1), self.tamanio)
+        self.matryoshka=N
+        print(f"Lista de muñecas:{N}")
+        return N
         
 
 
@@ -105,7 +102,7 @@ end_time_desanidar = time.time()
 
 print(f"Tiempo de ejecución (Recursivo): {end_time_recursivo - start_time_recursivo} segundos")
 print(f"Tiempo de ejecución (Iterativo): {end_time_iterativo - start_time_iterativo} segundos")
-print(f"Tiempo de ejecución (Anidar): {end_time_desanidar - start_time_desanidar} segundos")
+print(f"Tiempo de ejecución (Desanidar): {end_time_desanidar - start_time_desanidar} segundos")
 
 
 
